@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: My sample book
-author: The Jupyter Book Community
+author:
 logo: logo.png
 
 # Force re-execution of notebooks on each build.
@@ -31,3 +31,10 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+# disable footer copyright message to make more room for the image output
+# lordy this is janky.
+sphinx:
+  config:
+    html_show_copyright: false
+
