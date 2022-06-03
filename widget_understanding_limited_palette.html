@@ -1,0 +1,983 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[widget] Understanding Limited Palette’s Color Control Settings &#8212; My sample book</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Permutation tests" href="permutations_outputs.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Intro
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="permutations_outputs.html">
+   Permutation tests
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   [widget] Understanding Limited Palette’s Color Control Settings
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/widget_understanding_limited_palette.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fwidget_understanding_limited_palette.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/widget_understanding_limited_palette.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-limited-palette-mode">
+   What is “Limited Palette” mode?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#description-of-settings-in-widget">
+   Description of Settings in Widget
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#widget">
+   Widget
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#settings-shared-across-animations">
+   Settings shared across animations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#detailed-explanation-of-shared-settings">
+     Detailed explanation of shared settings
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>[widget] Understanding Limited Palette’s Color Control Settings</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-limited-palette-mode">
+   What is “Limited Palette” mode?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#description-of-settings-in-widget">
+   Description of Settings in Widget
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#widget">
+   Widget
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#settings-shared-across-animations">
+   Settings shared across animations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#detailed-explanation-of-shared-settings">
+     Detailed explanation of shared settings
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="widget-understanding-limited-palette-s-color-control-settings">
+<h1>[widget] Understanding Limited Palette’s Color Control Settings<a class="headerlink" href="#widget-understanding-limited-palette-s-color-control-settings" title="Permalink to this headline">¶</a></h1>
+<p>The widget below illustrates how images generated in “Limited Palette” mode are affected by changes to color control settings.</p>
+<p>Press the <strong>“▷”</strong> icon to begin the animation.</p>
+<p>The first run with any particular set of settings will probably show an empty image because the widget is janky and downloads only what it needs on the fly. What can I say: I’m an ML engineer, not a webdeveloper.</p>
+<div class="section" id="what-is-limited-palette-mode">
+<h2>What is “Limited Palette” mode?<a class="headerlink" href="#what-is-limited-palette-mode" title="Permalink to this headline">¶</a></h2>
+<p>In “Unlimited Palette” mode, pytti directly optimizes pixel values to try to maximize the similarity between the generated image and the input prompts. Limited Palette mode uses this same process, but adds additional constraints on how the colors in the image (i.e. the pixel values) are selected.</p>
+<p>We start by specifying a number of “palettes”. In this context, you can think of a palette as a container with a fixed number of slots, where each slot holds a single color. During optimization steps, colors which are all members of ths same “palette” container are optimized together. This has the effect that the “palette” objects become sort of “attached” to semantic objects in the image. Let’s say for example you have an init image of an ocean horizon, so half of the picture is water and half of it is the sky. If we set the number of palettes to 2, chances are one palette will primarily carry colors for painting the ocean and the other will carry colors for painting the sky. This is not a hard-and-fast rule, but you should anticipate that palette size settings will interact with the diversity of semantic content in the generated images.</p>
+<p>For advice and additional insights about palette and color behaviors in pytti, we recommend the community document <a class="reference external" href="https://docs.google.com/document/d/1EvkiHa12ButetruSBr82MJeomHfVRkvczB9-FgqtJ48/edit">Way of the TTI Artist</a> by oxysoft#6139 and collaborators.</p>
+</div>
+<div class="section" id="description-of-settings-in-widget">
+<h2>Description of Settings in Widget<a class="headerlink" href="#description-of-settings-in-widget" title="Permalink to this headline">¶</a></h2>
+<p>All settings except <code class="docutils literal notranslate"><span class="pre">smoothing_weight</span></code> are specific to Limited Palette mode.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">palette_size</span></code></strong>: Number of colors in each palette.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">palettes</span></code></strong>: Total number of palettes. The image will have palette_size*palettes colors total.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">gamma</span></code></strong>: Relative gamma value. Higher values make the image darker and higher contrast, lower values make the image lighter and lower contrast.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">hdr_weight</span></code></strong>: How strongly the optimizer will maintain the gamma. Set to 0 to disable.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">palette_normalization_weight</span></code></strong>: How strongly the optimizer will maintain the palettes’ presence in the image. Prevents the image from losing palettes.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">smoothing_weight</span></code></strong>: Makes the image smoother using “total variation loss” (old-school image denoising). Can also be negative for that deep fried look.</p></li>
+</ul>
+</div>
+<div class="section" id="widget">
+<h2>Widget<a class="headerlink" href="#widget" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">panel</span> <span class="k">as</span> <span class="nn">pn</span>
+
+<span class="n">pn</span><span class="o">.</span><span class="n">extension</span><span class="p">()</span>
+
+<span class="n">outputs_root</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;images_out&#39;</span><span class="p">)</span>
+<span class="n">folder_prefix</span> <span class="o">=</span> <span class="s1">&#39;permutations_limited_palette_2D&#39;</span>
+<span class="n">folders</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outputs_root</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">folder_prefix</span><span class="si">}</span><span class="s1">_*&#39;</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">format_val</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="n">v</span><span class="p">:</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">v</span>
+
+<span class="k">def</span> <span class="nf">parse_folder_name</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
+    <span class="n">metadata_string</span> <span class="o">=</span> <span class="n">folder</span><span class="o">.</span><span class="n">name</span><span class="p">[</span><span class="mi">1</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">folder_prefix</span><span class="p">):]</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;_?([a-zA-Z_]+)-([0-9.]+)&quot;</span>
+    <span class="n">matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">metadata_string</span><span class="p">)</span>
+    <span class="n">d_</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">format_val</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">}</span>
+    <span class="n">d_</span><span class="p">[</span><span class="s1">&#39;fpath&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">folder</span>
+    <span class="n">d_</span><span class="p">[</span><span class="s1">&#39;n_images&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">folder</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.png&#39;</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">d_</span>
+
+<span class="n">df_meta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">parse_folder_name</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">folders</span><span class="p">])</span>
+
+<span class="n">variant_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">df_meta</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;fpath&#39;</span><span class="p">]]</span>
+<span class="n">variant_ranges</span> <span class="o">=</span> <span class="p">{</span><span class="n">v</span><span class="p">:</span><span class="n">df_meta</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">variant_names</span><span class="p">}</span>
+<span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">variant_ranges</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+
+<span class="c1">###########################</span>
+
+<span class="n">url_prefix</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/dmarx/pytti-settings-test/main/images_out/&quot;</span>
+
+<span class="n">image_paths</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;images_out&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*.png&#39;</span><span class="p">)]</span>
+<span class="n">d_image_urls</span> <span class="o">=</span> <span class="p">{</span><span class="n">im_path</span><span class="p">:</span><span class="n">im_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;images_out/&#39;</span><span class="p">,</span> <span class="n">url_prefix</span><span class="p">)</span> <span class="k">for</span> <span class="n">im_path</span> <span class="ow">in</span> <span class="n">image_paths</span><span class="p">}</span>
+
+<span class="c1">###########################</span>
+
+<span class="n">n_imgs_per_group</span> <span class="o">=</span> <span class="mi">40</span>
+
+<span class="n">kargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">DiscreteSlider</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">value</span><span class="o">=</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">variant_ranges</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="n">kargs</span><span class="p">[</span><span class="s1">&#39;i&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pn</span><span class="o">.</span><span class="n">widgets</span><span class="o">.</span><span class="n">Player</span><span class="p">(</span><span class="n">interval</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">n_imgs_per_group</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">loop_policy</span><span class="o">=</span><span class="s1">&#39;reflect&#39;</span><span class="p">)</span>
+
+<span class="nd">@pn</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span>
+    <span class="o">**</span><span class="n">kargs</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">display_images</span><span class="p">(</span>
+    <span class="n">palettes</span><span class="p">,</span>
+    <span class="n">palette_size</span><span class="p">,</span>
+    <span class="n">gamma</span><span class="p">,</span>
+    <span class="n">hdr_weight</span><span class="p">,</span>
+    <span class="n">smoothing_weight</span><span class="p">,</span>
+    <span class="n">palette_normalization_weight</span><span class="p">,</span>
+    <span class="n">i</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">folder</span> <span class="o">=</span> <span class="n">df_meta</span><span class="p">[</span>
+        <span class="p">(</span><span class="n">palettes</span> <span class="o">==</span> <span class="n">df_meta</span><span class="p">[</span><span class="s1">&#39;palettes&#39;</span><span class="p">])</span> <span class="o">&amp;</span>
+        <span class="p">(</span><span class="n">palette_size</span> <span class="o">==</span> <span class="n">df_meta</span><span class="p">[</span><span class="s1">&#39;palette_size&#39;</span><span class="p">])</span> <span class="o">&amp;</span>
+        <span class="p">(</span><span class="n">gamma</span> <span class="o">==</span> <span class="n">df_meta</span><span class="p">[</span><span class="s1">&#39;gamma&#39;</span><span class="p">])</span> <span class="o">&amp;</span>
+        <span class="p">(</span><span class="n">hdr_weight</span> <span class="o">==</span> <span class="n">df_meta</span><span class="p">[</span><span class="s1">&#39;hdr_weight&#39;</span><span class="p">])</span> <span class="o">&amp;</span>
+        <span class="p">(</span><span class="n">smoothing_weight</span> <span class="o">==</span> <span class="n">df_meta</span><span class="p">[</span><span class="s1">&#39;smoothing_weight&#39;</span><span class="p">])</span> <span class="o">&amp;</span>
+        <span class="p">(</span><span class="n">palette_normalization_weight</span> <span class="o">==</span> <span class="n">df_meta</span><span class="p">[</span><span class="s1">&#39;palette_normalization_weight&#39;</span><span class="p">])</span>
+    <span class="p">][</span><span class="s1">&#39;fpath&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">im_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">folder</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">folder</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+    <span class="n">im_url</span> <span class="o">=</span> <span class="n">d_image_urls</span><span class="p">[</span><span class="n">im_path</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">pn</span><span class="o">.</span><span class="n">pane</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&lt;img src=&quot;</span><span class="si">{</span><span class="n">im_url</span><span class="si">}</span><span class="s1">&quot; width=&quot;700&quot;&gt;&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">sizing_mode</span><span class="o">=</span><span class="s1">&#39;fixed&#39;</span><span class="p">)</span>
+    <span class="c1">#return pn.pane.PNG(im_url, width=700, embed=False)</span>
+
+<span class="c1"># height=2000, sizing_mode=&#39;fixed&#39;</span>
+<span class="n">pn</span><span class="o">.</span><span class="n">panel</span><span class="p">(</span><span class="n">display_images</span><span class="p">)</span><span class="c1">#.embed(max_opts=n_imgs_per_group, max_states=999999999)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, js_modules, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+    if (js_modules == null) js_modules = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls.length === 0 && js_modules.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error() {
+      console.error("failed to load " + url);
+    }
+
+    for (var i = 0; i < css_urls.length; i++) {
+      var url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    var skip = [];
+    if (window.requirejs) {
+      window.requirejs.config({'packages': {}, 'paths': {'gridstack': 'https://cdn.jsdelivr.net/npm/gridstack@4.2.5/dist/gridstack-h5', 'notyf': 'https://cdn.jsdelivr.net/npm/notyf@3/notyf.min'}, 'shim': {'gridstack': {'exports': 'GridStack'}}});
+      require(["gridstack"], function(GridStack) {
+	window.GridStack = GridStack
+	on_load()
+      })
+      require(["notyf"], function() {
+	on_load()
+      })
+      root._bokeh_is_loading = css_urls.length + 2;
+    } else {
+      root._bokeh_is_loading = css_urls.length + js_urls.length + js_modules.length;
+    }    if (((window['GridStack'] !== undefined) && (!(window['GridStack'] instanceof HTMLElement))) || window.requirejs) {
+      var urls = ['https://cdn.jsdelivr.net/npm/gridstack@4.2.5/dist/gridstack-h5.js'];
+      for (var i = 0; i < urls.length; i++) {
+        skip.push(urls[i])
+      }
+    }    if (((window['Notyf'] !== undefined) && (!(window['Notyf'] instanceof HTMLElement))) || window.requirejs) {
+      var urls = ['https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js'];
+      for (var i = 0; i < urls.length; i++) {
+        skip.push(urls[i])
+      }
+    }    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      if (skip.indexOf(url) >= 0) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+    for (var i = 0; i < js_modules.length; i++) {
+      var url = js_modules[i];
+      if (skip.indexOf(url) >= 0) {
+	if (!window.requirejs) {
+	  on_load();
+	}
+	continue;
+      }
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      element.type = "module";
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+    if (!js_urls.length && !js_modules.length) {
+      on_load()
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  var js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-2.4.3.min.js", "https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js", "https://unpkg.com/@holoviz/panel@0.13.1/dist/panel.min.js"];
+  var js_modules = [];
+  var css_urls = ["https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css", "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css", "https://unpkg.com/@holoviz/panel@0.13.1/dist/css/card.css", "https://unpkg.com/@holoviz/panel@0.13.1/dist/css/alerts.css", "https://unpkg.com/@holoviz/panel@0.13.1/dist/css/widgets.css", "https://unpkg.com/@holoviz/panel@0.13.1/dist/css/markdown.css", "https://unpkg.com/@holoviz/panel@0.13.1/dist/css/debugger.css", "https://unpkg.com/@holoviz/panel@0.13.1/dist/css/dataframe.css", "https://unpkg.com/@holoviz/panel@0.13.1/dist/css/json.css", "https://unpkg.com/@holoviz/panel@0.13.1/dist/css/loading.css"];
+  var inline_js = [    function(Bokeh) {
+      inject_raw_css("\n    .bk.pn-loading.arcs:before {\n      background-image: url(\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBzdHlsZT0ibWFyZ2luOiBhdXRvOyBiYWNrZ3JvdW5kOiBub25lOyBkaXNwbGF5OiBibG9jazsgc2hhcGUtcmVuZGVyaW5nOiBhdXRvOyIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIj4gIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjMyIiBzdHJva2Utd2lkdGg9IjgiIHN0cm9rZT0iI2MzYzNjMyIgc3Ryb2tlLWRhc2hhcnJheT0iNTAuMjY1NDgyNDU3NDM2NjkgNTAuMjY1NDgyNDU3NDM2NjkiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+ICAgIDxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgdHlwZT0icm90YXRlIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgZHVyPSIxcyIga2V5VGltZXM9IjA7MSIgdmFsdWVzPSIwIDUwIDUwOzM2MCA1MCA1MCI+PC9hbmltYXRlVHJhbnNmb3JtPiAgPC9jaXJjbGU+PC9zdmc+\");\n      background-size: auto calc(min(50%, 400px));\n    }\n    ");
+    },    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {} // ensure no trailing comma for IE
+  ];
+
+  function run_inline_js() {
+    if ((root.Bokeh !== undefined) || (force === true)) {
+      for (var i = 0; i < inline_js.length; i++) {
+        inline_js[i].call(root, root.Bokeh);
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, js_modules, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script><script type="application/javascript">
+if ((window.PyViz === undefined) || (window.PyViz instanceof HTMLElement)) {
+  window.PyViz = {comms: {}, comm_status:{}, kernels:{}, receivers: {}, plot_index: []}
+}
+
+
+    function JupyterCommManager() {
+    }
+
+    JupyterCommManager.prototype.register_target = function(plot_id, comm_id, msg_handler) {
+      if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        comm_manager.register_target(comm_id, function(comm) {
+          comm.on_msg(msg_handler);
+        });
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        window.PyViz.kernels[plot_id].registerCommTarget(comm_id, function(comm) {
+          comm.onMsg = msg_handler;
+        });
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        google.colab.kernel.comms.registerTarget(comm_id, (comm) => {
+          var messages = comm.messages[Symbol.asyncIterator]();
+          function processIteratorResult(result) {
+            var message = result.value;
+            console.log(message)
+            var content = {data: message.data, comm_id};
+            var buffers = []
+            for (var buffer of message.buffers || []) {
+              buffers.push(new DataView(buffer))
+            }
+            var metadata = message.metadata || {};
+            var msg = {content, buffers, metadata}
+            msg_handler(msg);
+            return messages.next().then(processIteratorResult);
+          }
+          return messages.next().then(processIteratorResult);
+        })
+      }
+    }
+
+    JupyterCommManager.prototype.get_client_comm = function(plot_id, comm_id, msg_handler) {
+      if (comm_id in window.PyViz.comms) {
+        return window.PyViz.comms[comm_id];
+      } else if (window.comm_manager || ((window.Jupyter !== undefined) && (Jupyter.notebook.kernel != null))) {
+        var comm_manager = window.comm_manager || Jupyter.notebook.kernel.comm_manager;
+        var comm = comm_manager.new_comm(comm_id, {}, {}, {}, comm_id);
+        if (msg_handler) {
+          comm.on_msg(msg_handler);
+        }
+      } else if ((plot_id in window.PyViz.kernels) && (window.PyViz.kernels[plot_id])) {
+        var comm = window.PyViz.kernels[plot_id].connectToComm(comm_id);
+        comm.open();
+        if (msg_handler) {
+          comm.onMsg = msg_handler;
+        }
+      } else if (typeof google != 'undefined' && google.colab.kernel != null) {
+        var comm_promise = google.colab.kernel.comms.open(comm_id)
+        comm_promise.then((comm) => {
+          window.PyViz.comms[comm_id] = comm;
+          if (msg_handler) {
+            var messages = comm.messages[Symbol.asyncIterator]();
+            function processIteratorResult(result) {
+              var message = result.value;
+              var content = {data: message.data};
+              var metadata = message.metadata || {comm_id};
+              var msg = {content, metadata}
+              msg_handler(msg);
+              return messages.next().then(processIteratorResult);
+            }
+            return messages.next().then(processIteratorResult);
+          }
+        }) 
+        var sendClosure = (data, metadata, buffers, disposeOnDone) => {
+          return comm_promise.then((comm) => {
+            comm.send(data, metadata, buffers, disposeOnDone);
+          });
+        };
+        var comm = {
+          send: sendClosure
+        };
+      }
+      window.PyViz.comms[comm_id] = comm;
+      return comm;
+    }
+    window.PyViz.comm_manager = new JupyterCommManager();
+    
+
+
+var JS_MIME_TYPE = 'application/javascript';
+var HTML_MIME_TYPE = 'text/html';
+var EXEC_MIME_TYPE = 'application/vnd.holoviews_exec.v0+json';
+var CLASS_NAME = 'output';
+
+/**
+ * Render data to the DOM node
+ */
+function render(props, node) {
+  var div = document.createElement("div");
+  var script = document.createElement("script");
+  node.appendChild(div);
+  node.appendChild(script);
+}
+
+/**
+ * Handle when a new output is added
+ */
+function handle_add_output(event, handle) {
+  var output_area = handle.output_area;
+  var output = handle.output;
+  if ((output.data == undefined) || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+    return
+  }
+  var id = output.metadata[EXEC_MIME_TYPE]["id"];
+  var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+  if (id !== undefined) {
+    var nchildren = toinsert.length;
+    var html_node = toinsert[nchildren-1].children[0];
+    html_node.innerHTML = output.data[HTML_MIME_TYPE];
+    var scripts = [];
+    var nodelist = html_node.querySelectorAll("script");
+    for (var i in nodelist) {
+      if (nodelist.hasOwnProperty(i)) {
+        scripts.push(nodelist[i])
+      }
+    }
+
+    scripts.forEach( function (oldScript) {
+      var newScript = document.createElement("script");
+      var attrs = [];
+      var nodemap = oldScript.attributes;
+      for (var j in nodemap) {
+        if (nodemap.hasOwnProperty(j)) {
+          attrs.push(nodemap[j])
+        }
+      }
+      attrs.forEach(function(attr) { newScript.setAttribute(attr.name, attr.value) });
+      newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+      oldScript.parentNode.replaceChild(newScript, oldScript);
+    });
+    if (JS_MIME_TYPE in output.data) {
+      toinsert[nchildren-1].children[1].textContent = output.data[JS_MIME_TYPE];
+    }
+    output_area._hv_plot_id = id;
+    if ((window.Bokeh !== undefined) && (id in Bokeh.index)) {
+      window.PyViz.plot_index[id] = Bokeh.index[id];
+    } else {
+      window.PyViz.plot_index[id] = null;
+    }
+  } else if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+    var bk_div = document.createElement("div");
+    bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+    var script_attrs = bk_div.children[0].attributes;
+    for (var i = 0; i < script_attrs.length; i++) {
+      toinsert[toinsert.length - 1].childNodes[1].setAttribute(script_attrs[i].name, script_attrs[i].value);
+    }
+    // store reference to server id on output_area
+    output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+  }
+}
+
+/**
+ * Handle when an output is cleared or removed
+ */
+function handle_clear_output(event, handle) {
+  var id = handle.cell.output_area._hv_plot_id;
+  var server_id = handle.cell.output_area._bokeh_server_id;
+  if (((id === undefined) || !(id in PyViz.plot_index)) && (server_id !== undefined)) { return; }
+  var comm = window.PyViz.comm_manager.get_client_comm("hv-extension-comm", "hv-extension-comm", function () {});
+  if (server_id !== null) {
+    comm.send({event_type: 'server_delete', 'id': server_id});
+    return;
+  } else if (comm !== null) {
+    comm.send({event_type: 'delete', 'id': id});
+  }
+  delete PyViz.plot_index[id];
+  if ((window.Bokeh !== undefined) & (id in window.Bokeh.index)) {
+    var doc = window.Bokeh.index[id].model.document
+    doc.clear();
+    const i = window.Bokeh.documents.indexOf(doc);
+    if (i > -1) {
+      window.Bokeh.documents.splice(i, 1);
+    }
+  }
+}
+
+/**
+ * Handle kernel restart event
+ */
+function handle_kernel_cleanup(event, handle) {
+  delete PyViz.comms["hv-extension-comm"];
+  window.PyViz.plot_index = {}
+}
+
+/**
+ * Handle update_display_data messages
+ */
+function handle_update_output(event, handle) {
+  handle_clear_output(event, {cell: {output_area: handle.output_area}})
+  handle_add_output(event, handle)
+}
+
+function register_renderer(events, OutputArea) {
+  function append_mime(data, metadata, element) {
+    // create a DOM node to render to
+    var toinsert = this.create_output_subarea(
+    metadata,
+    CLASS_NAME,
+    EXEC_MIME_TYPE
+    );
+    this.keyboard_manager.register_events(toinsert);
+    // Render to node
+    var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+    render(props, toinsert[0]);
+    element.append(toinsert);
+    return toinsert
+  }
+
+  events.on('output_added.OutputArea', handle_add_output);
+  events.on('output_updated.OutputArea', handle_update_output);
+  events.on('clear_output.CodeCell', handle_clear_output);
+  events.on('delete.Cell', handle_clear_output);
+  events.on('kernel_ready.Kernel', handle_kernel_cleanup);
+
+  OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+    safe: true,
+    index: 0
+  });
+}
+
+if (window.Jupyter !== undefined) {
+  try {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  } catch(err) {
+  }
+}
+</script><div class="output text_html"><style>.bk-root, .bk-root .bk:before, .bk-root .bk:after {
+  font-family: var(--jp-ui-font-size1);
+  font-size: var(--jp-ui-font-size1);
+  color: var(--jp-ui-font-color1);
+}
+</style></div><div class="output text_html"><div id='1002'>
+  <div class="bk-root" id="cb57a1a6-fcae-444c-b0b7-5c7df23f9bec" data-root-id="1002"></div>
+</div>
+<script type="application/javascript">(function(root) {
+  function embed_document(root) {
+    var docs_json = {"cdded9d4-f297-49e7-8e55-fb67fb82211c":{"defs":[{"extends":null,"module":null,"name":"ReactiveHTML1","overrides":[],"properties":[]},{"extends":null,"module":null,"name":"FlexBox1","overrides":[],"properties":[{"default":"flex-start","kind":null,"name":"align_content"},{"default":"flex-start","kind":null,"name":"align_items"},{"default":"row","kind":null,"name":"flex_direction"},{"default":"wrap","kind":null,"name":"flex_wrap"},{"default":"flex-start","kind":null,"name":"justify_content"}]},{"extends":null,"module":null,"name":"GridStack1","overrides":[],"properties":[{"default":"warn","kind":null,"name":"mode"},{"default":null,"kind":null,"name":"ncols"},{"default":null,"kind":null,"name":"nrows"},{"default":true,"kind":null,"name":"allow_resize"},{"default":true,"kind":null,"name":"allow_drag"},{"default":[],"kind":null,"name":"state"}]},{"extends":null,"module":null,"name":"click1","overrides":[],"properties":[{"default":"","kind":null,"name":"terminal_output"},{"default":"","kind":null,"name":"debug_name"},{"default":0,"kind":null,"name":"clears"}]},{"extends":null,"module":null,"name":"NotificationAreaBase1","overrides":[],"properties":[{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"}]},{"extends":null,"module":null,"name":"NotificationArea1","overrides":[],"properties":[{"default":[],"kind":null,"name":"notifications"},{"default":"bottom-right","kind":null,"name":"position"},{"default":0,"kind":null,"name":"_clear"},{"default":[{"background":"#ffc107","icon":{"className":"fas fa-exclamation-triangle","color":"white","tagName":"i"},"type":"warning"},{"background":"#007bff","icon":{"className":"fas fa-info-circle","color":"white","tagName":"i"},"type":"info"}],"kind":null,"name":"types"}]},{"extends":null,"module":null,"name":"Notification","overrides":[],"properties":[{"default":null,"kind":null,"name":"background"},{"default":3000,"kind":null,"name":"duration"},{"default":null,"kind":null,"name":"icon"},{"default":"","kind":null,"name":"message"},{"default":null,"kind":null,"name":"notification_type"},{"default":false,"kind":null,"name":"_destroyed"}]},{"extends":null,"module":null,"name":"TemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]},{"extends":null,"module":null,"name":"MaterialTemplateActions1","overrides":[],"properties":[{"default":0,"kind":null,"name":"open_modal"},{"default":0,"kind":null,"name":"close_modal"}]}],"roots":{"references":[{"attributes":{"args":{"bidirectional":false,"properties":{},"source":{"id":"1018"},"target":{"id":"1017"}},"code":"try { \n    var labels = ['smoothing_weight: <b>0</b>', 'smoothing_weight: <b>0.1</b>', 'smoothing_weight: <b>1</b>']\n    target.text = labels[source.value]\n     } catch(err) { console.log(err) }","tags":[[140144850572960,[null,"value"],[null,null]]]},"id":"1029","type":"CustomJS"},{"attributes":{"margin":[5,0,0,10],"name":"","style":{"white-space":"nowrap"},"text":"gamma: <b>0</b>"},"id":"1011","type":"Div"},{"attributes":{"args":{"bidirectional":false,"properties":{},"source":{"id":"1021"},"target":{"id":"1020"}},"code":"try { \n    var labels = ['palette_normalization_weight: <b>0</b>', 'palette_normalization_weight: <b>0.1</b>', 'palette_normalization_weight: <b>1</b>']\n    target.text = labels[source.value]\n     } catch(err) { console.log(err) }","tags":[[140144850573056,[null,"value"],[null,null]]]},"id":"1030","type":"CustomJS"},{"attributes":{"reload":false},"id":"1032","type":"panel.models.location.Location"},{"attributes":{"end":2,"js_property_callbacks":{"change:value":[{"id":"1026"}]},"margin":[0,10,5,10],"show_value":false,"start":0,"tooltips":false,"value":0},"id":"1009","type":"Slider"},{"attributes":{"children":[{"id":"1014"},{"id":"1015"}],"margin":[0,0,0,0],"name":"Column00130"},"id":"1013","type":"Column"},{"attributes":{"args":{"bidirectional":false,"properties":{},"source":{"id":"1006"},"target":{"id":"1005"}},"code":"try { \n    var labels = ['palettes: <b>10</b>', 'palettes: <b>30</b>']\n    target.text = labels[source.value]\n     } catch(err) { console.log(err) }","tags":[[140144099950448,[null,"value"],[null,null]]]},"id":"1025","type":"CustomJS"},{"attributes":{"children":[{"id":"1005"},{"id":"1006"}],"margin":[0,0,0,0],"name":"Column00106"},"id":"1004","type":"Column"},{"attributes":{"args":{"bidirectional":false,"properties":{},"source":{"id":"1009"},"target":{"id":"1008"}},"code":"try { \n    var labels = ['palette_size: <b>3</b>', 'palette_size: <b>7</b>', 'palette_size: <b>15</b>']\n    target.text = labels[source.value]\n     } catch(err) { console.log(err) }","tags":[[140144864393392,[null,"value"],[null,null]]]},"id":"1026","type":"CustomJS"},{"attributes":{"children":[{"id":"1003"},{"id":"1023"}],"margin":[0,0,0,0],"name":"Column00159"},"id":"1002","type":"Column"},{"attributes":{"margin":[5,0,0,10],"name":"","style":{"white-space":"nowrap"},"text":"hdr_weight: <b>0</b>"},"id":"1014","type":"Div"},{"attributes":{"end":2,"js_property_callbacks":{"change:value":[{"id":"1030"}]},"margin":[0,10,5,10],"show_value":false,"start":0,"tooltips":false,"value":0},"id":"1021","type":"Slider"},{"attributes":{"children":[{"id":"1024"}],"margin":[0,0,0,0],"name":"Row00162"},"id":"1023","type":"Row"},{"attributes":{"children":[{"id":"1020"},{"id":"1021"}],"margin":[0,0,0,0],"name":"Column00146"},"id":"1019","type":"Column"},{"attributes":{"children":[{"id":"1004"},{"id":"1007"},{"id":"1010"},{"id":"1013"},{"id":"1016"},{"id":"1019"},{"id":"1022"}],"margin":[0,0,0,0],"name":"Column00163"},"id":"1003","type":"Column"},{"attributes":{"height":350,"margin":[5,5,5,5],"name":"HTML00160","sizing_mode":"fixed","text":"&lt;img src=&quot;https://raw.githubusercontent.com/dmarx/pytti-settings-test/main/images_out/permutations_limited_palette_2D_palettes-10_palette_size-3_gamma-0_hdr_weight-0_smoothing_weight-0_palette_normalization_weight-0/permutations_limited_palette_2D_palettes-10_palette_size-3_gamma-0_hdr_weight-0_smoothing_weight-0_palette_normalization_weight-0_1.png&quot; width=&quot;700&quot;&gt;","width":700},"id":"1024","type":"panel.models.markup.HTML"},{"attributes":{"end":2,"js_property_callbacks":{"change:value":[{"id":"1027"}]},"margin":[0,10,5,10],"show_value":false,"start":0,"tooltips":false,"value":0},"id":"1012","type":"Slider"},{"attributes":{"children":[{"id":"1017"},{"id":"1018"}],"margin":[0,0,0,0],"name":"Column00138"},"id":"1016","type":"Column"},{"attributes":{"margin":[5,0,0,10],"name":"","style":{"white-space":"nowrap"},"text":"palettes: <b>10</b>"},"id":"1005","type":"Div"},{"attributes":{"margin":[5,0,0,10],"name":"","style":{"white-space":"nowrap"},"text":"smoothing_weight: <b>0</b>"},"id":"1017","type":"Div"},{"attributes":{"children":[{"id":"1008"},{"id":"1009"}],"margin":[0,0,0,0],"name":"Column00114"},"id":"1007","type":"Column"},{"attributes":{"margin":[5,0,0,10],"name":"","style":{"white-space":"nowrap"},"text":"palette_normalization_weight: <b>0</b>"},"id":"1020","type":"Div"},{"attributes":{"client_comm_id":"317d0a47e878491e8b45e9b63f1ef606","comm_id":"53cf52be348746099c304621827a828a","plot_id":"1002"},"id":"1031","type":"panel.models.comm_manager.CommManager"},{"attributes":{"args":{"bidirectional":false,"properties":{},"source":{"id":"1012"},"target":{"id":"1011"}},"code":"try { \n    var labels = ['gamma: <b>0</b>', 'gamma: <b>0.1</b>', 'gamma: <b>1</b>']\n    target.text = labels[source.value]\n     } catch(err) { console.log(err) }","tags":[[140144864393248,[null,"value"],[null,null]]]},"id":"1027","type":"CustomJS"},{"attributes":{"end":2,"js_property_callbacks":{"change:value":[{"id":"1028"}]},"margin":[0,10,5,10],"show_value":false,"start":0,"tooltips":false,"value":0},"id":"1015","type":"Slider"},{"attributes":{"margin":[5,0,0,10],"name":"","style":{"white-space":"nowrap"},"text":"palette_size: <b>3</b>"},"id":"1008","type":"Div"},{"attributes":{"args":{"bidirectional":false,"properties":{},"source":{"id":"1015"},"target":{"id":"1014"}},"code":"try { \n    var labels = ['hdr_weight: <b>0</b>', 'hdr_weight: <b>0.1</b>', 'hdr_weight: <b>1</b>']\n    target.text = labels[source.value]\n     } catch(err) { console.log(err) }","tags":[[140144850572000,[null,"value"],[null,null]]]},"id":"1028","type":"CustomJS"},{"attributes":{"end":2,"js_property_callbacks":{"change:value":[{"id":"1029"}]},"margin":[0,10,5,10],"show_value":false,"start":0,"tooltips":false,"value":0},"id":"1018","type":"Slider"},{"attributes":{"end":1,"js_property_callbacks":{"change:value":[{"id":"1025"}]},"margin":[0,10,5,10],"show_value":false,"start":0,"tooltips":false,"value":0},"id":"1006","type":"Slider"},{"attributes":{"end":40,"height":80,"interval":100,"loop_policy":"reflect","margin":[5,10,5,10],"min_height":80,"min_width":510,"start":1,"value":1,"width":510},"id":"1022","type":"panel.models.widgets.Player"},{"attributes":{"children":[{"id":"1011"},{"id":"1012"}],"margin":[0,0,0,0],"name":"Column00122"},"id":"1010","type":"Column"}],"root_ids":["1002","1031","1032"]},"title":"Bokeh Application","version":"2.4.3"}};
+    var render_items = [{"docid":"cdded9d4-f297-49e7-8e55-fb67fb82211c","root_ids":["1002"],"roots":{"1002":"cb57a1a6-fcae-444c-b0b7-5c7df23f9bec"}}];
+    root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined && root.Bokeh.Panel !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined && root.Bokeh.Panel !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else if (document.readyState == "complete") {
+        attempts++;
+        if (attempts > 200) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 25, root)
+  }
+})(window);</script></div></div>
+</div>
+</div>
+<div class="section" id="settings-shared-across-animations">
+<h2>Settings shared across animations<a class="headerlink" href="#settings-shared-across-animations" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scenes</span><span class="p">:</span> <span class="s2">&quot;fractal crystals | colorful recursions || swirling curves | ethereal neon glow &quot;</span>
+
+<span class="n">scene_suffix</span><span class="p">:</span> <span class="s2">&quot; | text:-1:-.9 | watermark:-1:-.9&quot;</span>
+
+<span class="n">steps_per_frame</span><span class="p">:</span> <span class="mi">50</span>
+<span class="n">save_every</span><span class="p">:</span> <span class="mi">50</span>
+<span class="n">steps_per_scene</span><span class="p">:</span> <span class="mi">1000</span>
+<span class="n">interpolation_steps</span><span class="p">:</span> <span class="mi">500</span>
+
+<span class="n">image_model</span><span class="p">:</span> <span class="s2">&quot;Limited Palette&quot;</span>
+<span class="n">lock_palette</span><span class="p">:</span> <span class="n">false</span>
+
+<span class="n">animation_mode</span><span class="p">:</span> <span class="s2">&quot;2D&quot;</span>
+<span class="n">translate_y</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">zoom_x_2d</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">zoom_y_2d</span><span class="p">:</span> <span class="mi">3</span>
+
+<span class="n">ViT</span><span class="o">-</span><span class="n">B</span><span class="o">/</span><span class="mi">32</span><span class="p">:</span> <span class="n">true</span>
+<span class="n">cutouts</span><span class="p">:</span> <span class="mi">60</span>
+<span class="n">cut_pow</span><span class="p">:</span> <span class="mi">1</span>
+
+<span class="n">seed</span><span class="p">:</span> <span class="mi">12345</span>
+
+<span class="n">pixel_size</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">height</span><span class="p">:</span> <span class="mi">128</span>
+<span class="n">width</span><span class="p">:</span> <span class="mi">256</span>
+</pre></div>
+</div>
+<div class="section" id="detailed-explanation-of-shared-settings">
+<h3>Detailed explanation of shared settings<a class="headerlink" href="#detailed-explanation-of-shared-settings" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scenes</span><span class="p">:</span> <span class="s2">&quot;fractal crystals | colorful recursions || swirling curves | ethereal neon glow &quot;</span>
+</pre></div>
+</div>
+<p>We have two scenes (separated by <code class="docutils literal notranslate"><span class="pre">||</span></code>) with two prompts each (separated by (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scene_suffix</span><span class="p">:</span> <span class="s2">&quot; | text:-1:-.9 | watermark:-1:-.9&quot;</span>
+</pre></div>
+</div>
+<p>We add prompts with negative weights (and ‘stop’ weights: <code class="docutils literal notranslate"><span class="pre">prompt:weight:stop</span></code>) to try to discourage generation of specific artifacts. Putting these prompts in the <code class="docutils literal notranslate"><span class="pre">scene_suffix</span></code> field is a shorthand for concatenating this prompts into all of the scenes. I find it also helps keep the settings a little more neatly organized by reducing clutter in the <code class="docutils literal notranslate"><span class="pre">scenes</span></code> field.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">steps_per_frame</span><span class="p">:</span> <span class="mi">50</span>
+<span class="n">save_every</span><span class="p">:</span> <span class="mi">50</span>
+<span class="n">steps_per_scene</span><span class="p">:</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+<p>Pytti will take 50 optimization steps for each frame (i.e. image) of the animation.</p>
+<p>We have two scenes: 1000 steps_per_scene / 50 steps_per_frame = 20 frames per scene = <strong>40 frames total</strong> will be generated.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">interpolation_steps</span><span class="p">:</span> <span class="mi">500</span>
+</pre></div>
+</div>
+<p>a range of 500 steps will be treated as a kind of “overlap” between the two scenes to ease the transition from one scene to the next. This means for each scene, we’ll have 1000 - 500/2 = 750 steps = 15 frames that are just the prompt we specified for that scene, and 5 frames were the guiding prompts are constructed by interpolating (mixing) between the prompts of the two scenes. Concretely:</p>
+<ul class="simple">
+<li><p>first 15 frames: only the prompt for the first scene is used</p></li>
+<li><p>next 5 frames: we use the prompts from both scenes, weighting the <em>first</em> scene more heavily</p></li>
+<li><p>next 5 frames: we use the prompts from both scenes, weighting the <em>second</em> scene more heavily</p></li>
+<li><p>last 15 frames: only the prompt for the second scene is used.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image_model</span><span class="o">=</span><span class="s2">&quot;Limited Palette&quot;</span>
+<span class="n">lock_palette</span><span class="p">:</span> <span class="n">false</span>
+</pre></div>
+</div>
+<p>We’re using the Limited Palette mode described above, letting the palette change throughout the learning process rather than fitting and freezing it upon initialization.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">animation_mode</span><span class="p">:</span> <span class="s2">&quot;2D&quot;</span>
+<span class="n">translate_y</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">zoom_x_2d</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">zoom_y_2d</span><span class="p">:</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>After each frame is generated, we will initialize the next frame by scaling up (zooming into) the image a small amount, then shift it (translate) down (negative direction along y axis) a tiny bit. The zoom creates a forward motion illusion: adding the y translation creates the effect of the scene rotating away as the viewer passes over it. NB: more dramatic depth illusions are generally achieved using <code class="docutils literal notranslate"><span class="pre">animation_mode:</span> <span class="pre">3D</span></code>, but that mode generates images more slowly and this project already required several days to generate.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ViT</span><span class="o">-</span><span class="n">B</span><span class="o">/</span><span class="mi">32</span><span class="p">:</span> <span class="n">true</span>
+</pre></div>
+</div>
+<p>We’re using the smallest of openai’s pre-trained vision transformer (ViT) CLIP models to guide the animation. This is the AI component which computes the similarity between the image and the text prompt, hereafter referred to as “the perceptor”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cutouts</span><span class="p">:</span> <span class="mi">60</span>
+<span class="n">cut_pow</span><span class="p">:</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>For each optimization step, we will take 60 random crops from the image to show the perceptor. <code class="docutils literal notranslate"><span class="pre">cut_pow</span></code> controls the size of these cutouts: 1 is generally a good default, smaller values create bigger cutouts. Generally, more cutouts = nicer images. Setting the number of cutouts too low can result in the image segmenting itself into regions: you can observe this phenomenon manifesting towards the end of many of the animations generated in this experiment. In addition to turning up the number of cutouts, this could also potentially be fixed be setting the cut_pow lower to ask the perceptor to score larger regions at a time.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">seed</span><span class="p">:</span> <span class="mi">12345</span>
+</pre></div>
+</div>
+<p>If a seed is not specified, one will be generated randomly. This value is used to initialize the random number generator: specifying a seed promotes deterministic (repeatable) behavior. This is an especially useful parameter to set for comparison studies like this.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="permutations_outputs.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Permutation tests</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
