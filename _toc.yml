@@ -5,5 +5,5 @@ format: jb-book
 root: intro
 chapters:
 - file: permutations_outputs
-- file: [widget] Understanding Color Controls
+- file: widget_understanding_limited_palette
 
